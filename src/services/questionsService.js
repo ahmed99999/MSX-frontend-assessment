@@ -13,7 +13,6 @@ export default class Question {
                     page: page
                 }
             });
-            console.log(questions);
             return questions;
         } catch (error) {
             toast.error("NO questions found");
@@ -24,7 +23,7 @@ export default class Question {
 
     async getQuestion() {
         try {
-            const question = await Http.get(`/questions/${this.id}`);
+            const { data: question } = await Http.get(`/questions/${this.id}`);
             return question;
         } catch (error) {
             toast.error("question was not found");
@@ -35,7 +34,7 @@ export default class Question {
 
     async addQuestion(question) {
         try {
-            const createdQuestion = await Http.post("/questions", question);
+            const { data: createdQuestion } = await Http.post("/questions", question);
             toast.success("Question created");
             return createdQuestion;
         } catch (error) {
@@ -47,7 +46,7 @@ export default class Question {
 
     async addChoice(choiceId) {
         try {
-            const savedChoice = await Http.post(`/questions/${this.id}/choices/${choiceId}`);
+            const { data: savedChoice } = await Http.post(`/questions/${this.id}/choices/${choiceId}`);
             toast.success("choices was saved");
             return savedChoice;
         } catch (error) {

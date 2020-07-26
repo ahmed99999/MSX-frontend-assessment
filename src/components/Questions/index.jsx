@@ -25,7 +25,7 @@ class Questions extends Component {
                     <div className="col-10">
                         <div className="row">
                             {questions.map((question, index) => (
-                                <Question key={index} question={question} />
+                                <Question key={index} question={question} source={true} handleChange={null} />
                             ))}
                         </div>
                     </div>
