@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import QuestionClass from '../../services/questionsService';
 import Question from '../Question';
+import Loading from '../common/Loading';
 import './style.css';
 
 class Questions extends Component {
@@ -15,19 +16,22 @@ class Questions extends Component {
     }
 
     render() {
-        const { questions } = this.state;
+        const { questions, isLoaded } = this.state;
         return (
-            <div className="row questions">
-                <div className="col-1"></div>
-                <div className="col-10">
-                    <div className="row">
-                        {questions.map((question, index) => (
-                            <Question key={index} question={question} />
-                        ))}
+            <React.Fragment>
+                {!isLoaded && <Loading />}
+                {isLoaded && <div className="row questions">
+                    <div className="col-1"></div>
+                    <div className="col-10">
+                        <div className="row">
+                            {questions.map((question, index) => (
+                                <Question key={index} question={question} />
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div className="col-1"></div>
-            </div>
+                    <div className="col-1"></div>
+                </div>}
+            </React.Fragment>
         );
     }
 }
