@@ -8,14 +8,15 @@ export default class Question {
 
     static async getQuestions(page = null) {
         try {
-            const questions = await Http.get("/questions", {
+            const { data: questions } = await Http.get("/questions", {
                 params: {
                     page: page
                 }
             });
-            return [...questions];
+            console.log(questions);
+            return questions;
         } catch (error) {
-            toast.error("NO Qustions found");
+            toast.error("NO questions found");
             console.error(error);
             return [];
         }
