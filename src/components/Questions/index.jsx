@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import QuestionClass from '../../services/questionsService';
 import Question from '../Question';
+import './style.css';
 
 class Questions extends Component {
     state = {
@@ -16,13 +17,14 @@ class Questions extends Component {
     render() {
         const { questions } = this.state;
         return (
-            <div className="row">
+            <div className="row questions">
                 <div className="col-1"></div>
                 <div className="col-10">
-
-                    {questions.map((question, index) => (
-                        <Question key={index} question={question} />
-                    ))}
+                    <div className="row">
+                        {questions.map((question, index) => (
+                            <Question key={index} question={question} />
+                        ))}
+                    </div>
                 </div>
                 <div className="col-1"></div>
             </div>
