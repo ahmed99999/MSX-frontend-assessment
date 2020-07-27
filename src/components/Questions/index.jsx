@@ -3,6 +3,7 @@ import QuestionClass from '../../services/questionsService';
 import Question from '../Question';
 import Loading from '../common/Loading';
 import './style.css';
+import { Link } from 'react-router-dom';
 
 class Questions extends Component {
     state = {
@@ -29,7 +30,9 @@ class Questions extends Component {
                             ))}
                         </div>
                     </div>
-                    <div className="col-1"></div>
+                    <div className="col-1">
+                        <Link to="/questions/new" className="btn btn-primary" >Add Question</Link>
+                    </div>
                 </div>}
             </React.Fragment>
         );
