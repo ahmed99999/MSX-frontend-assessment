@@ -14,7 +14,7 @@ describe('Questions', () => {
         expect(tree).toMatchSnapshot();
     });
 
-    it('Questions: number of users', () => {
+    it('Questions: loading state rendering', () => {
         const component = shallow(<Questions />);
         const instance = component.instance();
         expect(instance.state.isLoaded).toBeFalsy();
